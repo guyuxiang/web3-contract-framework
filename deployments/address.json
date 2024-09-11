@@ -23,7 +23,7 @@
 		"address": "",
 		"sourceContractName": "Accessor",
 		"contractDeployTxBlockNumber": 10383649,
-		"contractType": "normal",
+		"contractType": "normal"
 	},
 	"VotingToken": {
 		"address": "",
