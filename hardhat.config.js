@@ -49,21 +49,21 @@ module.exports = {
       url: 'https://polygon-mainnet.infura.io/v3/ee88ccbf873149e6b94a8ef88dd99878',
       gasPrice: 250000000000,
       accounts: [
-        ''
+        '2b1ed542c7d7f6fed5d2c95a7a4eb5f10eb0a6169d5ef4d2a1872b8a92bf21d2'
       ]
     },
     polygon_amoy: {
       url: 'https://polygon-amoy.gateway.tenderly.co/5tC8uoCQ2JIDDa1xfoKjCS',
       chainId: 80002,
       accounts: [
-        ''
+        '2b1ed542c7d7f6fed5d2c95a7a4eb5f10eb0a6169d5ef4d2a1872b8a92bf21d2'
       ]
     },
     linea_sepolia: {
       url: 'https://linea-sepolia.infura.io/v3/4643ae7604804747b39480b919af22cb',
       chainId: 59141,
       accounts: [
-        ''
+        '2b1ed542c7d7f6fed5d2c95a7a4eb5f10eb0a6169d5ef4d2a1872b8a92bf21d2'
       ],
       gasPrice: 50000000000
     }

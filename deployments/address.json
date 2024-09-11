@@ -21,7 +21,7 @@
 	},
 	"Accessor": {
 		"address": "",
-		"sourceContractName": "UserPermission",
+		"sourceContractName": "Accessor",
 		"contractDeployTxBlockNumber": 10383649,
 		"contractType": "normal",
 	},

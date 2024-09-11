@@ -16,15 +16,6 @@
 web3-contract-framework/
 ├── README.md
 ├── codegen
-│   ├── config.abi
-│   ├── digitaltokentradediamond.abi
-│   ├── dtterc20.abi
-│   ├── encash.abi
-│   ├── rorenhancement.abi
-│   ├── rorerc721.abi
-│   ├── rormarket.abi
-│   ├── transactionidfactory.abi
-│   └── userpermission.abi
 ├── contracts
 │   ├── endPoint
 │   │   ├── Diamond.sol
