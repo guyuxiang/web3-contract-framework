@@ -1,0 +1,46 @@
+{
+	"Diamond": {
+		"address": "",
+		"sourceContractName": "Diamond",
+		"contractDeployTxBlockNumber": 10380338,
+		"contractType": "diamond",
+		"facetContracts": [
+			{
+				"facetName": "DiamondEtherscanFacet",
+				"address": ""
+			},
+			{
+				"facetName": "DiamondLoupeFacet",
+				"address": ""
+			},
+			{
+				"facetName": "DiamondCutFacet",
+				"address": ""
+			}
+		]
+	},
+	"Accessor": {
+		"address": "",
+		"sourceContractName": "UserPermission",
+		"contractDeployTxBlockNumber": 10383649,
+		"contractType": "normal",
+	},
+	"VotingToken": {
+		"address": "",
+		"sourceContractName": "VotingToken",
+		"contractDeployTxBlockNumber": 10383610,
+		"contractType": "normal"
+	},
+	"TimeLock": {
+		"address": "",
+		"sourceContractName": "TimeLock",
+		"contractDeployTxBlockNumber": 10383617,
+		"contractType": "normal"
+	},
+	"Governance": {
+		"address": "",
+		"sourceContractName": "Governance",
+		"contractDeployTxBlockNumber": 10383628,
+		"contractType": "normal"
+	}
+}

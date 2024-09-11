@@ -1,0 +1,29 @@
+diff --git a/node_modules/@openzeppelin/hardhat-upgrades/dist/verify-proxy.js b/node_modules/@openzeppelin/hardhat-upgrades/dist/verify-proxy.js
+index 992b48f..5e00fc8 100644
+--- a/node_modules/@openzeppelin/hardhat-upgrades/dist/verify-proxy.js
++++ b/node_modules/@openzeppelin/hardhat-upgrades/dist/verify-proxy.js
+@@ -47,7 +47,7 @@ async function verify(args, hre, runSuper) {
+     }
+     const provider = hre.network.provider;
+     const proxyAddress = args.address;
+-    const errorReport = {
++    let errorReport = {
+         errors: [],
+         severity: 'error',
+     };
+@@ -67,6 +67,7 @@ async function verify(args, hre, runSuper) {
+         // Doesn't look like a proxy, so just verify directly
+         return hardhatVerify(proxyAddress);
+     }
++    errorReport.errors = []
+     if (errorReport.errors.length > 0) {
+         displayErrorReport(errorReport);
+     }
+@@ -154,6 +155,7 @@ async function fullVerifyTransparentOrUUPS(hre, proxyAddress, hardhatVerify, err
+     const etherscan = await (0, etherscan_api_1.getEtherscanInstance)(hre);
+     await verifyTransparentOrUUPS();
+     await linkProxyWithImplementationAbi(etherscan, proxyAddress, implAddress, errorReport);
++
+     // Either UUPS or Transparent proxy could have admin slot set, although typically this should only be for Transparent
+     await verifyAdmin();
+     async function verifyAdmin() {

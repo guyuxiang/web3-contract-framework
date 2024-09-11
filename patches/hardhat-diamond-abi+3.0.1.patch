@@ -1,0 +1,35 @@
+diff --git a/node_modules/hardhat-diamond-abi/dist/index.js b/node_modules/hardhat-diamond-abi/dist/index.js
+index 1274b09..adf4d57 100644
+--- a/node_modules/hardhat-diamond-abi/dist/index.js
++++ b/node_modules/hardhat-diamond-abi/dist/index.js
+@@ -113,6 +113,7 @@ class DiamondAbiCompilationJob extends compilation_job_1.CompilationJob {
+ config_1.extendConfig((config, userConfig) => {
+     config.diamondAbi = [userConfig.diamondAbi].flat().map(function (userConfig) {
+         const { name, include = [], exclude = [], filter, strict = true } = userConfig ?? {};
++        let filterFunction;
+         if (!name) {
+             throw new plugins_1.HardhatPluginError(exports.PLUGIN_NAME, "`name` config is required.");
+         }
+@@ -125,8 +126,11 @@ config_1.extendConfig((config, userConfig) => {
+         if (exclude && !Array.isArray(exclude)) {
+             throw new plugins_1.HardhatPluginError(exports.PLUGIN_NAME, "`exclude` config must be an array if provided.");
+         }
+-        if (filter && typeof filter !== "function") {
+-            throw new plugins_1.HardhatPluginError(exports.PLUGIN_NAME, "`filter` config must be a function if provided.");
++        if (filter && typeof filter == "string") {
++            filterFunction = eval(`(${filter})`);
++        }
++        if (filterFunction && typeof filterFunction !== "function") {
++            throw new plugins_1.HardhatPluginError(exports.PLUGIN_NAME, "`filter` config must be a functionString if provided.");
+         }
+         if (typeof strict !== "boolean") {
+             throw new plugins_1.HardhatPluginError(exports.PLUGIN_NAME, "`strict` config must be a boolean if provided.");
+@@ -135,7 +139,7 @@ config_1.extendConfig((config, userConfig) => {
+             name,
+             include,
+             exclude,
+-            filter,
++            filterFunction,
+             strict,
+         };
+     });
