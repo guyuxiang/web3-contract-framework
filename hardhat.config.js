@@ -6,7 +6,7 @@ require("@nomicfoundation/hardhat-ethers");
 const tdly = require('@tenderly/hardhat-tenderly');
 require("hardhat-diamond-abi");
 require("hardhat-storage-layout-changes");
-
+require('dotenv').config();
 tdly.setup();
 
 task("hello", "Prints 'Hello, World!'", async function(taskArguments, hre, runSuper) {
@@ -46,32 +46,32 @@ module.exports = {
       blockGasLimit: 50000000000
     },
     polygon: {
-      url: 'https://polygon-mainnet.infura.io/v3/ee88ccbf873149e6b94a8ef88dd99878',
+      url: process.env.RPC_API_KEY_POLYGON,
       gasPrice: 250000000000,
       accounts: [
-        '2b1ed542c7d7f6fed5d2c95a7a4eb5f10eb0a6169d5ef4d2a1872b8a92bf21d2'
+        process.env.PRIVATE_KEY_POLYGON
       ]
     },
     polygon_amoy: {
-      url: 'https://polygon-amoy.gateway.tenderly.co/5tC8uoCQ2JIDDa1xfoKjCS',
+      url: process.env.RPC_API_KEY_POLYGON_AMOY,
       chainId: 80002,
       accounts: [
-        '2b1ed542c7d7f6fed5d2c95a7a4eb5f10eb0a6169d5ef4d2a1872b8a92bf21d2'
+        process.env.PRIVATE_KEY_POLYGON_AMOY
       ]
     },
     linea_sepolia: {
-      url: 'https://linea-sepolia.infura.io/v3/4643ae7604804747b39480b919af22cb',
+      url: process.env.RPC_API_KEY_LINEA_SEPOLIA,
       chainId: 59141,
       accounts: [
-        '2b1ed542c7d7f6fed5d2c95a7a4eb5f10eb0a6169d5ef4d2a1872b8a92bf21d2'
+        process.env.PRIVATE_KEY_LINEA_SEPOLIA
       ],
       gasPrice: 50000000000
     }
   },
   etherscan: {
     apiKey: {
-      lineaSepolia: 'Y8IXDIWF2T11X3SDPXJJWHJYJQD2SYXCDE',
-      polygonAmoy: '9WBYENCEWEZCBMURJUQ6M724NVZAQFTAA5'
+      lineaSepolia: process.env.ETHERSCAN_API_KEY_LINEA,
+      polygonAmoy: process.env.ETHERSCAN_API_KEY_POLYGON
     },
     customChains: [
       {

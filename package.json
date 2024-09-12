@@ -29,6 +29,7 @@
   "dependencies": {
     "bignumber.js": "^9.1.1",
     "dayjs": "^1.11.10",
+    "dotenv": "^16.4.5",
     "ethers5": "npm:ethers@^5.7.2",
     "hardhat-diamond-abi": "^3.0.1",
     "hardhat-storage-layout-changes": "^0.1.2"

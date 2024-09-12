@@ -1,6 +1,6 @@
 const p = require('path')
 const fs = require('fs')
-const dbPath = p.join(__dirname, '../../deployments/deploys', 'address.json') // 合约地址
+const dbPath = p.join(__dirname, '../../deployments', 'address.json') // 合约地址
 const envPath = p.join(__dirname, '../', 'env.json') // 参数配置
 const contractTemplate = p.join(__dirname, '../deploys', 'deployTemplate.json') // 合约模板
 
