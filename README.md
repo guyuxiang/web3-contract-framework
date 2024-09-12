@@ -96,3 +96,9 @@ npx hardhat storage-layout --update
 
 # 部署流程
 
+# node_modules包修改
+打补丁示例:
+npx patch-package hardhat
+
+# 开启hardhat rpc dubug日志
+DEBUG=hardhat:providers npx hardhat run...

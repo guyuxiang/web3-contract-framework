@@ -1,0 +1,52 @@
+diff --git a/node_modules/hardhat/internal/core/providers/accounts.js b/node_modules/hardhat/internal/core/providers/accounts.js
+index e1664d8..d39a695 100644
+--- a/node_modules/hardhat/internal/core/providers/accounts.js
++++ b/node_modules/hardhat/internal/core/providers/accounts.js
+@@ -35,6 +35,7 @@ const validation_1 = require("../jsonrpc/types/input/validation");
+ const chainId_1 = require("./chainId");
+ const util_1 = require("./util");
+ const wrapper_1 = require("./wrapper");
++const debug = require('debug')('hardhat:providers');
+ class LocalAccountsProvider extends chainId_1.ProviderWrapperWithChainId {
+     constructor(provider, localAccountsHexPrivateKeys) {
+         super(provider);
+@@ -129,6 +130,16 @@ class LocalAccountsProvider extends chainId_1.ProviderWrapperWithChainId {
+             const privateKey = this._getPrivateKeyForAddress(txRequest.from);
+             const chainId = await this._getChainId();
+             const rawTransaction = await this._getSignedTransaction(txRequest, chainId, privateKey);
++            debug("eth_sendRawTransaction:", JSON.parse(JSON.stringify(txRequest, (key, value) => {
++                    if (typeof value === 'bigint') {
++                        return value.toString()
++                    } else if (typeof value !== 'undefined' && (key === 'from' || key === 'to' || key === 'data')) {
++                        return '0x' + Buffer.from(value, 'hex').toString('hex')
++                    } else {
++                        return value
++                    }
++                }
++            )));
+             return this._wrappedProvider.request({
+                 method: "eth_sendRawTransaction",
+                 params: [bufferToHex(rawTransaction)],
+diff --git a/node_modules/hardhat/internal/core/providers/http.js b/node_modules/hardhat/internal/core/providers/http.js
+index 21eb6c4..bc74f5a 100644
+--- a/node_modules/hardhat/internal/core/providers/http.js
++++ b/node_modules/hardhat/internal/core/providers/http.js
+@@ -32,6 +32,7 @@ const errors_1 = require("../errors");
+ const errors_list_1 = require("../errors-list");
+ const proxy_1 = require("../../util/proxy");
+ const errors_2 = require("./errors");
++const debug = require('debug')('hardhat:providers');
+ function isErrorResponse(response) {
+     return typeof response.error !== "undefined";
+ }
+@@ -75,6 +76,10 @@ class HttpProvider extends events_1.EventEmitter {
+     async request(args) {
+         const jsonRpcRequest = this._getJsonRpcRequest(args.method, args.params);
+         const jsonRpcResponse = await this._fetchJsonRpcResponse(jsonRpcRequest);
++        if (args.method != "eth_chainId") {
++            debug("jsonRpcRequest:", jsonRpcRequest);
++            debug("jsonRpcResponse:", jsonRpcResponse);
++        }
+         if (isErrorResponse(jsonRpcResponse)) {
+             const error = new errors_2.ProviderError(jsonRpcResponse.error.message, jsonRpcResponse.error.code);
+             error.data = jsonRpcResponse.error.data;
