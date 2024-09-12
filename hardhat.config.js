@@ -1,5 +1,3 @@
-process.env.TENDERLY_AUTOMATIC_VERIFICATION = true
-process.env.TENDERLY_AUTOMATIC_POPULATE_HARDHAT_VERIFY_CONFIG=true
 require('@nomicfoundation/hardhat-toolbox')
 require("@openzeppelin/hardhat-upgrades");
 require("@nomicfoundation/hardhat-ethers");
