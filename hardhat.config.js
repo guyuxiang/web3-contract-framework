@@ -1,11 +1,11 @@
 require('@nomicfoundation/hardhat-toolbox')
 require("@openzeppelin/hardhat-upgrades");
 require("@nomicfoundation/hardhat-ethers");
-const tdly = require('@tenderly/hardhat-tenderly');
 require("hardhat-diamond-abi");
 require("hardhat-storage-layout-changes");
 require('dotenv').config();
-tdly.setup();
+//const tdly = require('@tenderly/hardhat-tenderly');
+//tdly.setup();
 
 task("hello", "Prints 'Hello, World!'", async function(taskArguments, hre, runSuper) {
   console.log("Hello, World!");
@@ -23,8 +23,8 @@ module.exports = {
     }
   },
   tenderly: {
-    username: "guyuxiang" ?? "error",
-    project: "projectname",
+    username: "<username." ?? "error",
+    project: "<projectname>",
     privateVerification: true
   },
   diamondAbi: {

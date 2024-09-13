@@ -37,5 +37,15 @@ for (let i = 0; i < list.length; i++) {
         // 解析出abi文件
         const abiFile = './codegen/'+ ccname + ".abi"
         fs.writeFileSync(abiFile, JSON.stringify(config, '', '\t'));
+
+        // go文件夹
+        const gocodeDir = "./codegen/" + ccname
+        if (!fs.existsSync(gocodeDir)) {
+            fs.mkdirSync(gocodeDir)
+        }
+
+        // 生成golang文件
+        const cmd = 'abigen --abi ' + abiFile + " --pkg "+ ccname + " --out " + gocodeDir + "/"+ ccname + ".go"
+        console.log(cmd);
     }
 }
