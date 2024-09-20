@@ -23,7 +23,7 @@ module.exports.deployContracts =  async function deployContracts(contractsToDepl
       paramFactoryName = item.split('.')[1]
       // console.log('paramAddress: ', paramAddress)
       return address[paramFactoryName].address
-    } else if (typeof item === "string" && item.includes('config.')) {
+    } else if (typeof item === "string" && item.includes('env.')) {
       // console.log('envP: ', envP)
       return envParam[item.split('.')[1]]
     } else if (typeof item === "string" && item == 'deployer') {
@@ -104,6 +104,7 @@ module.exports.deployContracts =  async function deployContracts(contractsToDepl
         throw Error(`Diamond cut failed: ${tx.hash}`)
       }
       console.log('Completed diamond cut')
+      address[contract.contractName] = new Object()
       address[contract.contractName].address = await diamond.getAddress()
       address[contract.contractName].sourceContractName = contract.factoryName
       address[contract.contractName].contractDeployTxBlockNumber = (await ethers.provider.getTransaction(diamond.deploymentTransaction().hash)).blockNumber
@@ -130,6 +131,7 @@ module.exports.deployContracts =  async function deployContracts(contractsToDepl
       contractInstance =  contract.deployParam.length === 0 ? await upgrades.deployProxy(factory, options) : await upgrades.deployProxy(factory, param, options)
       contractInstance = await contractInstance.waitForDeployment()
       console.log(contract.contractName + ' proxy deployed to:', await contractInstance.getAddress())
+      address[contract.contractName] = new Object()
       address[contract.contractName].address = await contractInstance.getAddress()
       address[contract.contractName].sourceContractName = contract.factoryName
       address[contract.contractName].contractDeployTxBlockNumber = (await ethers.provider.getTransaction(contractInstance.deploymentTransaction().hash)).blockNumber
@@ -140,6 +142,7 @@ module.exports.deployContracts =  async function deployContracts(contractsToDepl
       contractInstance = await factory.deploy(...param)
       contractInstance = await contractInstance.waitForDeployment()
       console.log(contract.contractName + ' proxy deployed to:', await contractInstance.getAddress())
+      address[contract.contractName] = new Object()
       address[contract.contractName].address = await contractInstance.getAddress()
       address[contract.contractName].sourceContractName = contract.factoryName
       address[contract.contractName].contractDeployTxBlockNumber = (await ethers.provider.getTransaction(contractInstance.deploymentTransaction().hash)).blockNumber

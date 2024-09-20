@@ -24,7 +24,8 @@
     "solidity-coverage": "^0.8.0",
     "ts-node": "^10.9.2",
     "typechain": "^8.1.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "@chainlink/contracts": "1.2.0"
   },
   "dependencies": {
     "bignumber.js": "^9.1.1",

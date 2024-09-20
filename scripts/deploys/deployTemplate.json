@@ -1,42 +1,9 @@
 [
   {
-    "factoryName": "Diamond",
-    "contractName": "Diamond",
-    "facetNames": [
-    ],
-    "type": "diamond"
-  },
-  {
-    "factoryName": "VotingToken",
-    "contractName": "VotingToken",
-    "deployParam": [],
-    "type": "normal"
-  },
-  {
-    "factoryName": "TimeLock",
-    "contractName": "TimeLock",
+    "factoryName": "SubscriptionConsumer",
+    "contractName": "SubscriptionConsumer",
     "deployParam": [
-      "0",
-      [],
-      [],
-      "deployer"
-    ],
-    "type": "normal"
-  },
-  {
-    "factoryName": "Governance",
-    "contractName": "Governance",
-    "deployParam": [
-      "address.VotingToken",
-      "address.TimeLock"
-    ],
-    "type": "normal"
-  },
-  {
-    "factoryName": "Accessor",
-    "contractName": "Accessor",
-    "deployParam": [
-      "address.TimeLock"
+      "env.vrfCoordinator"
     ],
     "type": "normal"
   }
