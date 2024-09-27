@@ -42,5 +42,17 @@
 		"sourceContractName": "Governance",
 		"contractDeployTxBlockNumber": 10383628,
 		"contractType": "normal"
+	},
+	"SubscriptionConsumer": {
+		"address": "0x122e6b523C207448E3182e2B3FA309aA39126395",
+		"sourceContractName": "SubscriptionConsumer",
+		"contractDeployTxBlockNumber": 12198456,
+		"contractType": "normal"
+	},
+	"DataConsumerV3": {
+		"address": "0x0362Fe29aF35A4dF414FF99981E6aF3B0a924A39",
+		"sourceContractName": "DataConsumerV3",
+		"contractDeployTxBlockNumber": 12432869,
+		"contractType": "normal"
 	}
 }
