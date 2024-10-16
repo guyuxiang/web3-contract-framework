@@ -5,10 +5,21 @@ async function main () {
     const address = await db.readAddress()
     console.log('all address', address)
 
-    const envParam = await db.readEnv()
-    console.log('envParam', envParam)
+    const configParam = await db.readconfig()
+    console.log('configParam', configParam)
 
-    const contractsParam =
+    const contractsParam = [{
+        "factoryName": "StreamsUpkeepRegistrar",
+        "contractName": "StreamsUpkeepRegistrar",
+        "contractPath": "contracts/oracle/chainlink/DataStreams/StreamsUpkeepRegistrar.sol:StreamsUpkeepRegistrar",
+        "deployParam": [
+            "config.verifierProxyAddress",
+            "config.linkToken",
+            "config.automationRegistrarAddress",
+            ["config.dataStreamsId"]
+        ],
+        "type": "normal"
+    }]
 
     await verifyContracts(contractsParam)
 }

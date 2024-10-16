@@ -3,7 +3,7 @@
     "factoryName": "SubscriptionConsumer",
     "contractName": "SubscriptionConsumer",
     "deployParam": [
-      "env.vrfCoordinator"
+      "config.vrfCoordinator"
     ],
     "type": "normal"
   },
@@ -11,7 +11,7 @@
     "factoryName": "DataConsumerV3",
     "contractName": "DataConsumerV3",
     "deployParam": [
-      "env.feedAddress"
+      "config.dataFeedsId"
     ],
     "type": "normal"
   },
@@ -19,9 +19,27 @@
     "factoryName": "APIConsumer",
     "contractName": "APIConsumer",
     "deployParam": [
-      "env.linkToken",
-      "env.oracle",
-      "env.jobId"
+      "config.linkToken",
+      "config.oracle",
+      "config.jobId"
+    ],
+    "type": "normal"
+  },
+  {
+    "factoryName": "StreamsUpkeepRegistrar",
+    "contractName": "StreamsUpkeepRegistrar",
+    "deployParam": [
+      "config.verifierProxyAddress",
+      "config.linkToken",
+      "config.automationRegistrarAddress",
+      ["config.dataStreamsId"]
+    ],
+    "type": "normal"
+  },
+  {
+    "factoryName": "LogEmitter",
+    "contractName": "LogEmitter",
+    "deployParam": [
     ],
     "type": "normal"
   }

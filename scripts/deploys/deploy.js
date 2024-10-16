@@ -5,10 +5,27 @@ async function main () {
     const address = await db.readAddress()
     console.log('all address', address)
 
-    const envParam = await db.readEnv()
-    console.log('envParam', envParam)
+    const configParam = await db.readconfig()
+    console.log('configParam', configParam)
 
-    const contractsParam  = await db.readContractTemplate()
+    const contractsParam  = [  {
+        "factoryName": "StreamsUpkeepRegistrar",
+        "contractName": "StreamsUpkeepRegistrar",
+        "deployParam": [
+            "config.verifierProxyAddress",
+            "config.linkToken",
+            "config.automationRegistrarAddress",
+            ["config.dataStreamsId"]
+        ],
+        "type": "normal"
+    },
+        {
+            "factoryName": "LogEmitter",
+            "contractName": "LogEmitter",
+            "deployParam": [
+            ],
+            "type": "normal"
+        }]
 
     await deployContracts(contractsParam)
 }

@@ -5,16 +5,16 @@ async function main () {
     const address = await db.readAddress()
     console.log("all address:", address);
 
-    const env = await db.readEnv()
-    console.log('env:', env);
+    const config = await db.readconfig()
+    console.log('config:', config);
 
     const SubscriptionConsumerC = await ethers.getContractAt("SubscriptionConsumer", address['SubscriptionConsumer'].address)
-    let tx = await SubscriptionConsumerC.setSubscriptionId(ethers.getUint(env.vrfSubscriptionId))
+    let tx = await SubscriptionConsumerC.setSubscriptionId(ethers.getUint(config.vrfSubscriptionId))
     let receipt = await tx.wait()
     if (!receipt.status) {
         throw Error(`setSubscriptionId failed: ${tx.hash}`)
     }
-    tx = await SubscriptionConsumerC.setKeyHash(env.vrfKeyHash)
+    tx = await SubscriptionConsumerC.setKeyHash(config.vrfKeyHash)
     receipt = await tx.wait()
     if (!receipt.status) {
         throw Error(`setKeyHash failed: ${tx.hash}`)

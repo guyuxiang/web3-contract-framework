@@ -52,7 +52,7 @@ web3-contract-framework/
 │   ├── deploys
 │   │   ├── deploy.js
 │   │   └── deployTemplate.json
-│   ├── env.json
+│   ├── config.json
 │   ├── flowCli
 │   │   ├── db.js
 │   │   ├── diamond.js

@@ -1,0 +1,28 @@
+{
+  "polygon_amoy": {
+    "user": "",
+    "vrfSubscriptionId": "27806797744119217402263432113997219167401713536432108645398318576829879519673",
+    "vrfKeyHash": "0x816bedba8a50b294e5cbd47842baf240c2385f2eaf719edbd4f250a137a8c899",
+    "vrfCoordinator": "0x343300b5d84d444b2adc9116fef1bed02be49cf2",
+    "dataFeedsId": "0xF0d50568e3A7e8259E16663972b11910F89BD8e7",
+    "linkToken": "",
+    "oracle": "",
+    "jobId": "",
+    "verifierProxyAddress": "",
+    "automationRegistrarAddress": "",
+    "dataStreamsId": ""
+  },
+  "arbitrum_sepolia": {
+    "user": "",
+    "vrfSubscriptionId": "",
+    "vrfKeyHash": "",
+    "vrfCoordinator": "",
+    "dataFeedsId": "",
+    "linkToken": "0xb1D4538B4571d411F07960EF2838Ce337FE1E80E",
+    "oracle": "",
+    "jobId": "",
+    "verifierProxyAddress": "0x2ff010DEbC1297f19579B4246cad07bd24F2488A",
+    "automationRegistrarAddress": "0x881918E24290084409DaA91979A30e6f0dB52eBe",
+    "dataStreamsId": "0x000359843a543ee2fe414dc14c7e7920ef10f4372990b79d6361cdc0dd1ba782"
+  }
+}

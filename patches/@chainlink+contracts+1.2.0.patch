@@ -1,0 +1,115 @@
+diff --git a/node_modules/@chainlink/contracts/src/v0.8/automation/interfaces/ILogAutomation.sol b/node_modules/@chainlink/contracts/src/v0.8/automation/interfaces/ILogAutomation.sol
+index 20a41f4..6ac349f 100644
+--- a/node_modules/@chainlink/contracts/src/v0.8/automation/interfaces/ILogAutomation.sol
++++ b/node_modules/@chainlink/contracts/src/v0.8/automation/interfaces/ILogAutomation.sol
+@@ -23,22 +23,7 @@ struct Log {
+ }
+ 
+ interface ILogAutomation {
+-  /**
+-   * @notice method that is simulated by the keepers to see if any work actually
+-   * needs to be performed. This method does does not actually need to be
+-   * executable, and since it is only ever simulated it can consume lots of gas.
+-   * @dev To ensure that it is never called, you may want to add the
+-   * cannotExecute modifier from KeeperBase to your implementation of this
+-   * method.
+-   * @param log the raw log data matching the filter that this contract has
+-   * registered as a trigger
+-   * @param checkData user-specified extra data to provide context to this upkeep
+-   * @return upkeepNeeded boolean to indicate whether the keeper should call
+-   * performUpkeep or not.
+-   * @return performData bytes that the keeper should call performUpkeep with, if
+-   * upkeep is needed. If you would like to encode data to decode later, try
+-   * `abi.encode`.
+-   */
++
+   function checkLog(
+     Log calldata log,
+     bytes memory checkData
+diff --git a/node_modules/@chainlink/contracts/src/v0.8/automation/interfaces/StreamsLookupCompatibleInterface.sol b/node_modules/@chainlink/contracts/src/v0.8/automation/interfaces/StreamsLookupCompatibleInterface.sol
+index ed873a0..3e15854 100644
+--- a/node_modules/@chainlink/contracts/src/v0.8/automation/interfaces/StreamsLookupCompatibleInterface.sol
++++ b/node_modules/@chainlink/contracts/src/v0.8/automation/interfaces/StreamsLookupCompatibleInterface.sol
+@@ -5,28 +5,11 @@ pragma solidity ^0.8.0;
+ interface StreamsLookupCompatibleInterface {
+   error StreamsLookup(string feedParamKey, string[] feeds, string timeParamKey, uint256 time, bytes extraData);
+ 
+-  /**
+-   * @notice any contract which wants to utilize StreamsLookup feature needs to
+-   * implement this interface as well as the automation compatible interface.
+-   * @param values an array of bytes returned from data streams endpoint.
+-   * @param extraData context data from streams lookup process.
+-   * @return upkeepNeeded boolean to indicate whether the keeper should call performUpkeep or not.
+-   * @return performData bytes that the keeper should call performUpkeep with, if
+-   * upkeep is needed. If you would like to encode data to decode later, try `abi.encode`.
+-   */
+   function checkCallback(
+     bytes[] memory values,
+     bytes memory extraData
+   ) external view returns (bool upkeepNeeded, bytes memory performData);
+ 
+-  /**
+-   * @notice this is a new, optional function in streams lookup. It is meant to surface streams lookup errors.
+-   * @param errCode an uint value that represents the streams lookup error code.
+-   * @param extraData context data from streams lookup process.
+-   * @return upkeepNeeded boolean to indicate whether the keeper should call performUpkeep or not.
+-   * @return performData bytes that the keeper should call performUpkeep with, if
+-   * upkeep is needed. If you would like to encode data to decode later, try `abi.encode`.
+-   */
+   function checkErrorHandler(
+     uint256 errCode,
+     bytes memory extraData
+diff --git a/node_modules/@chainlink/contracts/src/v0.8/llo-feeds/interfaces/IRewardManager.sol b/node_modules/@chainlink/contracts/src/v0.8/llo-feeds/interfaces/IRewardManager.sol
+index 5a6e03f..ecbe17a 100644
+--- a/node_modules/@chainlink/contracts/src/v0.8/llo-feeds/interfaces/IRewardManager.sol
++++ b/node_modules/@chainlink/contracts/src/v0.8/llo-feeds/interfaces/IRewardManager.sol
+@@ -1,5 +1,5 @@
+ // SPDX-License-Identifier: MIT
+-pragma solidity 0.8.19;
++pragma solidity ^0.8.19;
+ 
+ import {IERC165} from "../../vendor/openzeppelin-solidity/v4.8.3/contracts/interfaces/IERC165.sol";
+ import {Common} from "../libraries/Common.sol";
+diff --git a/node_modules/@chainlink/contracts/src/v0.8/llo-feeds/interfaces/IVerifierFeeManager.sol b/node_modules/@chainlink/contracts/src/v0.8/llo-feeds/interfaces/IVerifierFeeManager.sol
+index 522db95..ea6fb92 100644
+--- a/node_modules/@chainlink/contracts/src/v0.8/llo-feeds/interfaces/IVerifierFeeManager.sol
++++ b/node_modules/@chainlink/contracts/src/v0.8/llo-feeds/interfaces/IVerifierFeeManager.sol
+@@ -1,5 +1,5 @@
+ // SPDX-License-Identifier: MIT
+-pragma solidity 0.8.19;
++pragma solidity ^0.8.19;
+ 
+ import {IERC165} from "../../vendor/openzeppelin-solidity/v4.8.3/contracts/interfaces/IERC165.sol";
+ import {Common} from "../libraries/Common.sol";
+diff --git a/node_modules/@chainlink/contracts/src/v0.8/llo-feeds/libraries/Common.sol b/node_modules/@chainlink/contracts/src/v0.8/llo-feeds/libraries/Common.sol
+index f732ced..c76fe50 100644
+--- a/node_modules/@chainlink/contracts/src/v0.8/llo-feeds/libraries/Common.sol
++++ b/node_modules/@chainlink/contracts/src/v0.8/llo-feeds/libraries/Common.sol
+@@ -1,5 +1,5 @@
+ // SPDX-License-Identifier: MIT
+-pragma solidity 0.8.19;
++pragma solidity ^0.8.19;
+ 
+ /*
+  * @title Common
+diff --git a/node_modules/@chainlink/contracts/src/v0.8/vrf/dev/interfaces/IVRFSubscriptionV2Plus.sol b/node_modules/@chainlink/contracts/src/v0.8/vrf/dev/interfaces/IVRFSubscriptionV2Plus.sol
+index b178ffb..f2e8c27 100644
+--- a/node_modules/@chainlink/contracts/src/v0.8/vrf/dev/interfaces/IVRFSubscriptionV2Plus.sol
++++ b/node_modules/@chainlink/contracts/src/v0.8/vrf/dev/interfaces/IVRFSubscriptionV2Plus.sol
+@@ -55,15 +55,7 @@ interface IVRFSubscriptionV2Plus {
+    */
+   function createSubscription() external returns (uint256 subId);
+ 
+-  /**
+-   * @notice Get a VRF subscription.
+-   * @param subId - ID of the subscription
+-   * @return balance - LINK balance of the subscription in juels.
+-   * @return nativeBalance - native balance of the subscription in wei.
+-   * @return reqCount - Requests count of subscription.
+-   * @return owner - owner of the subscription.
+-   * @return consumers - list of consumer address which are able to use this subscription.
+-   */
++
+   function getSubscription(
+     uint256 subId
+   )

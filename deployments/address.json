@@ -54,5 +54,17 @@
 		"sourceContractName": "DataConsumerV3",
 		"contractDeployTxBlockNumber": 12432869,
 		"contractType": "normal"
+	},
+	"StreamsUpkeepRegistrar": {
+		"address": "0x2A7D0B11Cd3bB64a8954E1E148613Bec545428d7",
+		"sourceContractName": "StreamsUpkeepRegistrar",
+		"contractDeployTxBlockNumber": 84944320,
+		"contractType": "normal"
+	},
+	"LogEmitter": {
+		"address": "0x4B48c707E02EF3486d8aC997e899CBb8b454158b",
+		"sourceContractName": "LogEmitter",
+		"contractDeployTxBlockNumber": 84944335,
+		"contractType": "normal"
 	}
 }

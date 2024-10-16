@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: UNLICENSED
-pragma solidity 0.8.20;
+pragma solidity 0.8.27;
 
 library Permission {
     // 使用每位数字来进行权限判断

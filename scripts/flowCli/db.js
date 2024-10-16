@@ -1,7 +1,7 @@
 const p = require('path')
 const fs = require('fs')
 const dbPath = p.join(__dirname, '../../deployments', 'address.json') // 合约地址
-const envPath = p.join(__dirname, '../', 'env.json') // 参数配置
+const configPath = p.join(__dirname, '../', 'config.json') // 参数配置
 const contractTemplate = p.join(__dirname, '../deploys', 'deployTemplate.json') // 合约模板
 
 const db  = {
@@ -22,13 +22,14 @@ const db  = {
       })
     })
   },
-  readEnv(path = envPath) {
+  readconfig(path = configPath) {
     return new Promise((resolve, reject) => {
       fs.readFile( path, {
         encoding: 'utf8'
       }, (err, data) => {
         if (err) return reject(err)
-        resolve(JSON.parse(data.toString()))
+        let config = JSON.parse(data.toString())
+        resolve(config[hre.network.name])
       })
     })
   },

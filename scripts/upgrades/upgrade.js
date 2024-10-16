@@ -5,8 +5,8 @@ async function main () {
     const address = await db.readAddress()
     console.log('all address', address)
 
-    const env = await db.readEnv()
-    console.log('envParam', env)
+    const config = await db.readconfig()
+    console.log('configParam', config)
 
     // 升级
     const contractsParam  = await db.readContractTemplate()

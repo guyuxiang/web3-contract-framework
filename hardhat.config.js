@@ -14,7 +14,7 @@ task("hello", "Prints 'Hello, World!'", async function(taskArguments, hre, runSu
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: {
-    version: '0.8.20',
+    version: '0.8.27',
     settings: {
       optimizer: {
         enabled: true,
@@ -57,6 +57,13 @@ module.exports = {
         process.env.PRIVATE_KEY_POLYGON_AMOY
       ]
     },
+    arbitrum_sepolia: {
+      url: process.env.RPC_API_KEY_ARBITRUM_SEPOLIA,
+      chainId: 421614,
+      accounts: [
+        process.env.PRIVATE_KEY_ARBITRUM_SEPOLIA
+      ]
+    },
     linea_sepolia: {
       url: process.env.RPC_API_KEY_LINEA_SEPOLIA,
       chainId: 59141,
@@ -69,7 +76,8 @@ module.exports = {
   etherscan: {
     apiKey: {
       lineaSepolia: process.env.ETHERSCAN_API_KEY_LINEA,
-      polygonAmoy: process.env.ETHERSCAN_API_KEY_POLYGON
+      polygonAmoy: process.env.ETHERSCAN_API_KEY_POLYGON,
+      arbitrumSepolia: process.env.ETHERSCAN_API_KEY_ARBITRUM
     },
     customChains: [
       {

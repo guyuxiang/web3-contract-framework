@@ -15,7 +15,7 @@ module.exports.reOrganizeTokens = function reOrganizeTokens (tokenNames, tokenSy
 
 module.exports.deployContracts =  async function deployContracts(contractsToDeploy) {
   const address = await db.readAddress()
-  const envParam = await db.readEnv()
+  const configParam = await db.readconfig()
   const depolyer = (await hre.ethers.provider.getSigner(0)).address
   function getParamValue (item) {
     let paramFactoryName = ''
@@ -23,9 +23,9 @@ module.exports.deployContracts =  async function deployContracts(contractsToDepl
       paramFactoryName = item.split('.')[1]
       // console.log('paramAddress: ', paramAddress)
       return address[paramFactoryName].address
-    } else if (typeof item === "string" && item.includes('env.')) {
-      // console.log('envP: ', envP)
-      return envParam[item.split('.')[1]]
+    } else if (typeof item === "string" && item.includes('config.')) {
+      // console.log('configP: ', configP)
+      return configParam[item.split('.')[1]]
     } else if (typeof item === "string" && item == 'deployer') {
       return depolyer
     }  else {
@@ -136,12 +136,24 @@ module.exports.deployContracts =  async function deployContracts(contractsToDepl
       address[contract.contractName].sourceContractName = contract.factoryName
       address[contract.contractName].contractDeployTxBlockNumber = (await ethers.provider.getTransaction(contractInstance.deploymentTransaction().hash)).blockNumber
       address[contract.contractName].contractType = contract.type
+    } else if (contract.type === 'beacon') {
+      const options = {
+        redeployImplementation: 'always',
+        timeout: 0
+      }
+      contractInstance = await upgrades.deployBeacon(factory);
+      contractInstance = await contractInstance.waitForDeployment();
+      console.log(contract.contractName + ' beacon deployed to:', await contractInstance.getAddress())
+      address[contract.contractName].address = await contractInstance.getAddress()
+      address[contract.contractName].sourceContractName = contract.factoryName
+      address[contract.contractName].contractDeployTxBlockNumber = (await ethers.provider.getTransaction(contractInstance.deployTransaction.hash)).blockNumber
+      address[contract.contractName].contractType = contract.type
     } else if (contract.type === 'normal') {
       const param = processDeployParam(contract.deployParam)
       console.log('deploy param: ', param)
       contractInstance = await factory.deploy(...param)
       contractInstance = await contractInstance.waitForDeployment()
-      console.log(contract.contractName + ' proxy deployed to:', await contractInstance.getAddress())
+      console.log(contract.contractName + ' deployed to:', await contractInstance.getAddress())
       address[contract.contractName] = new Object()
       address[contract.contractName].address = await contractInstance.getAddress()
       address[contract.contractName].sourceContractName = contract.factoryName
@@ -155,7 +167,7 @@ module.exports.deployContracts =  async function deployContracts(contractsToDepl
 
 module.exports.upgradeContracts =  async function upgradeContracts(contractsToUpgrade) {
   const address = await db.readAddress()
-  const envParam = await db.readEnv()
+  const configParam = await db.readconfig()
   function getParamValue (item) {
     let paramFactoryName = ''
     if (item.includes('address.')) {
@@ -163,8 +175,8 @@ module.exports.upgradeContracts =  async function upgradeContracts(contractsToUp
       // console.log('paramAddress: ', paramAddress)
       return address[paramFactoryName].address
     } else if (item.includes('config.')) {
-      // console.log('envP: ', envP)
-      return envParam[item.split('.')[1]]
+      // console.log('configP: ', configP)
+      return configParam[item.split('.')[1]]
     } else {
       return item
     }
@@ -201,6 +213,17 @@ module.exports.upgradeContracts =  async function upgradeContracts(contractsToUp
       );
       const contractImplAddress = await upgrades.erc1967.getImplementationAddress(await contractInstance.getAddress());
       console.log(contract.contractName + ' upgraded successfully', await contractInstance.getAddress(), "==>", contractImplAddress)
+    } else if (contract.type == 'beacon') {
+      const factory = await ethers.getContractFactory(contract.factoryName)
+      await upgrades.forceImport(address[contract.contractName].address, factory, {kind: "beacon"});
+      const contractInstance = await upgrades.upgradeBeacon(
+          address[contract.contractName].address,
+          factory,
+          {
+            redeployImplementation: "always"
+          }
+      );
+      console.log(contract.contractName + ' beacon upgraded successfully', await contractInstance.getAddress())
     } else if (contract.type == 'diamond') {
       const diamondAddress = address[contract.contractName].address
       let diamondCutFacet = await ethers.getContractAt('IDiamondCut', diamondAddress)
@@ -271,7 +294,7 @@ module.exports.upgradeContracts =  async function upgradeContracts(contractsToUp
 
 module.exports.verifyContracts =  async function verifyContracts(contractsToVerify) {
   const address = await db.readAddress()
-  const envParam = await db.readEnv()
+  const configParam = await db.readconfig()
   function getParamValue (item) {
     let paramFactoryName = ''
     if (item.includes('address.')) {
@@ -279,8 +302,8 @@ module.exports.verifyContracts =  async function verifyContracts(contractsToVeri
       // console.log('paramAddress: ', paramAddress)
       return address[paramFactoryName].address
     } else if (item.includes('config.')) {
-      // console.log('envP: ', envP)
-      return envParam[item.split('.')[1]]
+      // console.log('configP: ', configP)
+      return configParam[item.split('.')[1]]
     } else {
       return item
     }
@@ -352,12 +375,20 @@ module.exports.verifyContracts =  async function verifyContracts(contractsToVeri
           }).then().catch((error)=>{
             console.log(error)
           });
-    } else {
+    } else if (contract.type == "normal"){
       const param = processDeployParam(contract.deployParam)
       await hre.run("verify:verify", {
         address: address[contract.contractName].address,
         contract: contract.contractPath, //Filename.sol:ClassName
         constructorArguments: param
+      }).then().catch((error)=>{
+        console.log(error)
+      });
+    } else {
+      await hre.run("verify:verify", {
+        address: address[contract.contractName].address,
+        contract: contract.contractPath, //Filename.sol:ClassName
+        constructorArguments: []
       }).then().catch((error)=>{
         console.log(error)
       });
