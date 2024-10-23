@@ -1,0 +1,212 @@
+{
+  "storage": [
+    {
+      "astId": 6288,
+      "contract": "contracts/govern/VotingToken.sol:VotingToken",
+      "label": "_balances",
+      "offset": 0,
+      "slot": "0",
+      "type": "t_mapping(t_address,t_uint256)"
+    },
+    {
+      "astId": 6294,
+      "contract": "contracts/govern/VotingToken.sol:VotingToken",
+      "label": "_allowances",
+      "offset": 0,
+      "slot": "1",
+      "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+    },
+    {
+      "astId": 6296,
+      "contract": "contracts/govern/VotingToken.sol:VotingToken",
+      "label": "_totalSupply",
+      "offset": 0,
+      "slot": "2",
+      "type": "t_uint256"
+    },
+    {
+      "astId": 6298,
+      "contract": "contracts/govern/VotingToken.sol:VotingToken",
+      "label": "_name",
+      "offset": 0,
+      "slot": "3",
+      "type": "t_string_storage"
+    },
+    {
+      "astId": 6300,
+      "contract": "contracts/govern/VotingToken.sol:VotingToken",
+      "label": "_symbol",
+      "offset": 0,
+      "slot": "4",
+      "type": "t_string_storage"
+    },
+    {
+      "astId": 7645,
+      "contract": "contracts/govern/VotingToken.sol:VotingToken",
+      "label": "_paused",
+      "offset": 0,
+      "slot": "5",
+      "type": "t_bool"
+    },
+    {
+      "astId": 387,
+      "contract": "contracts/govern/VotingToken.sol:VotingToken",
+      "label": "_owner",
+      "offset": 1,
+      "slot": "5",
+      "type": "t_address"
+    },
+    {
+      "astId": 8720,
+      "contract": "contracts/govern/VotingToken.sol:VotingToken",
+      "label": "_nameFallback",
+      "offset": 0,
+      "slot": "6",
+      "type": "t_string_storage"
+    },
+    {
+      "astId": 8722,
+      "contract": "contracts/govern/VotingToken.sol:VotingToken",
+      "label": "_versionFallback",
+      "offset": 0,
+      "slot": "7",
+      "type": "t_string_storage"
+    },
+    {
+      "astId": 7582,
+      "contract": "contracts/govern/VotingToken.sol:VotingToken",
+      "label": "_nonces",
+      "offset": 0,
+      "slot": "8",
+      "type": "t_mapping(t_address,t_uint256)"
+    },
+    {
+      "astId": 5429,
+      "contract": "contracts/govern/VotingToken.sol:VotingToken",
+      "label": "_delegatee",
+      "offset": 0,
+      "slot": "9",
+      "type": "t_mapping(t_address,t_address)"
+    },
+    {
+      "astId": 5434,
+      "contract": "contracts/govern/VotingToken.sol:VotingToken",
+      "label": "_delegateCheckpoints",
+      "offset": 0,
+      "slot": "10",
+      "type": "t_mapping(t_address,t_struct(Trace208)12569_storage)"
+    },
+    {
+      "astId": 5437,
+      "contract": "contracts/govern/VotingToken.sol:VotingToken",
+      "label": "_totalCheckpoints",
+      "offset": 0,
+      "slot": "11",
+      "type": "t_struct(Trace208)12569_storage"
+    }
+  ],
+  "types": {
+    "t_address": {
+      "encoding": "inplace",
+      "label": "address",
+      "numberOfBytes": "20"
+    },
+    "t_array(t_struct(Checkpoint208)12574_storage)dyn_storage": {
+      "base": "t_struct(Checkpoint208)12574_storage",
+      "encoding": "dynamic_array",
+      "label": "struct Checkpoints.Checkpoint208[]",
+      "numberOfBytes": "32"
+    },
+    "t_bool": {
+      "encoding": "inplace",
+      "label": "bool",
+      "numberOfBytes": "1"
+    },
+    "t_mapping(t_address,t_address)": {
+      "encoding": "mapping",
+      "key": "t_address",
+      "label": "mapping(address => address)",
+      "numberOfBytes": "32",
+      "value": "t_address"
+    },
+    "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+      "encoding": "mapping",
+      "key": "t_address",
+      "label": "mapping(address => mapping(address => uint256))",
+      "numberOfBytes": "32",
+      "value": "t_mapping(t_address,t_uint256)"
+    },
+    "t_mapping(t_address,t_struct(Trace208)12569_storage)": {
+      "encoding": "mapping",
+      "key": "t_address",
+      "label": "mapping(address => struct Checkpoints.Trace208)",
+      "numberOfBytes": "32",
+      "value": "t_struct(Trace208)12569_storage"
+    },
+    "t_mapping(t_address,t_uint256)": {
+      "encoding": "mapping",
+      "key": "t_address",
+      "label": "mapping(address => uint256)",
+      "numberOfBytes": "32",
+      "value": "t_uint256"
+    },
+    "t_string_storage": {
+      "encoding": "bytes",
+      "label": "string",
+      "numberOfBytes": "32"
+    },
+    "t_struct(Checkpoint208)12574_storage": {
+      "encoding": "inplace",
+      "label": "struct Checkpoints.Checkpoint208",
+      "members": [
+        {
+          "astId": 12571,
+          "contract": "contracts/govern/VotingToken.sol:VotingToken",
+          "label": "_key",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint48"
+        },
+        {
+          "astId": 12573,
+          "contract": "contracts/govern/VotingToken.sol:VotingToken",
+          "label": "_value",
+          "offset": 6,
+          "slot": "0",
+          "type": "t_uint208"
+        }
+      ],
+      "numberOfBytes": "32"
+    },
+    "t_struct(Trace208)12569_storage": {
+      "encoding": "inplace",
+      "label": "struct Checkpoints.Trace208",
+      "members": [
+        {
+          "astId": 12568,
+          "contract": "contracts/govern/VotingToken.sol:VotingToken",
+          "label": "_checkpoints",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_array(t_struct(Checkpoint208)12574_storage)dyn_storage"
+        }
+      ],
+      "numberOfBytes": "32"
+    },
+    "t_uint208": {
+      "encoding": "inplace",
+      "label": "uint208",
+      "numberOfBytes": "26"
+    },
+    "t_uint256": {
+      "encoding": "inplace",
+      "label": "uint256",
+      "numberOfBytes": "32"
+    },
+    "t_uint48": {
+      "encoding": "inplace",
+      "label": "uint48",
+      "numberOfBytes": "6"
+    }
+  }
+}

@@ -1,0 +1,456 @@
+{
+  "storage": [
+    {
+      "astId": 8720,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_nameFallback",
+      "offset": 0,
+      "slot": "0",
+      "type": "t_string_storage"
+    },
+    {
+      "astId": 8722,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_versionFallback",
+      "offset": 0,
+      "slot": "1",
+      "type": "t_string_storage"
+    },
+    {
+      "astId": 7582,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_nonces",
+      "offset": 0,
+      "slot": "2",
+      "type": "t_mapping(t_address,t_uint256)"
+    },
+    {
+      "astId": 784,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_name",
+      "offset": 0,
+      "slot": "3",
+      "type": "t_string_storage"
+    },
+    {
+      "astId": 789,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_proposals",
+      "offset": 0,
+      "slot": "4",
+      "type": "t_mapping(t_uint256,t_struct(ProposalCore)762_storage)"
+    },
+    {
+      "astId": 792,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_governanceCall",
+      "offset": 0,
+      "slot": "5",
+      "type": "t_struct(Bytes32Deque)13629_storage"
+    },
+    {
+      "astId": 4214,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_proposalThreshold",
+      "offset": 0,
+      "slot": "7",
+      "type": "t_uint256"
+    },
+    {
+      "astId": 4216,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_votingDelay",
+      "offset": 0,
+      "slot": "8",
+      "type": "t_uint48"
+    },
+    {
+      "astId": 4218,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_votingPeriod",
+      "offset": 6,
+      "slot": "8",
+      "type": "t_uint32"
+    },
+    {
+      "astId": 4005,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_proposalVotes",
+      "offset": 0,
+      "slot": "9",
+      "type": "t_mapping(t_uint256,t_struct(ProposalVote)4000_storage)"
+    },
+    {
+      "astId": 5129,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_quorumNumeratorHistory",
+      "offset": 0,
+      "slot": "10",
+      "type": "t_struct(Trace208)12569_storage"
+    },
+    {
+      "astId": 4667,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_timelock",
+      "offset": 0,
+      "slot": "11",
+      "type": "t_contract(TimelockController)3977"
+    },
+    {
+      "astId": 4671,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_timelockIds",
+      "offset": 0,
+      "slot": "12",
+      "type": "t_mapping(t_uint256,t_bytes32)"
+    },
+    {
+      "astId": 4408,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_proposalIds",
+      "offset": 0,
+      "slot": "13",
+      "type": "t_array(t_uint256)dyn_storage"
+    },
+    {
+      "astId": 4413,
+      "contract": "contracts/govern/Governance.sol:Governance",
+      "label": "_proposalDetails",
+      "offset": 0,
+      "slot": "14",
+      "type": "t_mapping(t_uint256,t_struct(ProposalDetails)4405_storage)"
+    }
+  ],
+  "types": {
+    "t_address": {
+      "encoding": "inplace",
+      "label": "address",
+      "numberOfBytes": "20"
+    },
+    "t_array(t_address)dyn_storage": {
+      "base": "t_address",
+      "encoding": "dynamic_array",
+      "label": "address[]",
+      "numberOfBytes": "32"
+    },
+    "t_array(t_bytes_storage)dyn_storage": {
+      "base": "t_bytes_storage",
+      "encoding": "dynamic_array",
+      "label": "bytes[]",
+      "numberOfBytes": "32"
+    },
+    "t_array(t_struct(Checkpoint208)12574_storage)dyn_storage": {
+      "base": "t_struct(Checkpoint208)12574_storage",
+      "encoding": "dynamic_array",
+      "label": "struct Checkpoints.Checkpoint208[]",
+      "numberOfBytes": "32"
+    },
+    "t_array(t_uint256)dyn_storage": {
+      "base": "t_uint256",
+      "encoding": "dynamic_array",
+      "label": "uint256[]",
+      "numberOfBytes": "32"
+    },
+    "t_bool": {
+      "encoding": "inplace",
+      "label": "bool",
+      "numberOfBytes": "1"
+    },
+    "t_bytes32": {
+      "encoding": "inplace",
+      "label": "bytes32",
+      "numberOfBytes": "32"
+    },
+    "t_bytes_storage": {
+      "encoding": "bytes",
+      "label": "bytes",
+      "numberOfBytes": "32"
+    },
+    "t_contract(TimelockController)3977": {
+      "encoding": "inplace",
+      "label": "contract TimelockController",
+      "numberOfBytes": "20"
+    },
+    "t_mapping(t_address,t_bool)": {
+      "encoding": "mapping",
+      "key": "t_address",
+      "label": "mapping(address => bool)",
+      "numberOfBytes": "32",
+      "value": "t_bool"
+    },
+    "t_mapping(t_address,t_uint256)": {
+      "encoding": "mapping",
+      "key": "t_address",
+      "label": "mapping(address => uint256)",
+      "numberOfBytes": "32",
+      "value": "t_uint256"
+    },
+    "t_mapping(t_uint128,t_bytes32)": {
+      "encoding": "mapping",
+      "key": "t_uint128",
+      "label": "mapping(uint128 => bytes32)",
+      "numberOfBytes": "32",
+      "value": "t_bytes32"
+    },
+    "t_mapping(t_uint256,t_bytes32)": {
+      "encoding": "mapping",
+      "key": "t_uint256",
+      "label": "mapping(uint256 => bytes32)",
+      "numberOfBytes": "32",
+      "value": "t_bytes32"
+    },
+    "t_mapping(t_uint256,t_struct(ProposalCore)762_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint256",
+      "label": "mapping(uint256 => struct Governor.ProposalCore)",
+      "numberOfBytes": "32",
+      "value": "t_struct(ProposalCore)762_storage"
+    },
+    "t_mapping(t_uint256,t_struct(ProposalDetails)4405_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint256",
+      "label": "mapping(uint256 => struct GovernorStorage.ProposalDetails)",
+      "numberOfBytes": "32",
+      "value": "t_struct(ProposalDetails)4405_storage"
+    },
+    "t_mapping(t_uint256,t_struct(ProposalVote)4000_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint256",
+      "label": "mapping(uint256 => struct GovernorCountingSimple.ProposalVote)",
+      "numberOfBytes": "32",
+      "value": "t_struct(ProposalVote)4000_storage"
+    },
+    "t_string_storage": {
+      "encoding": "bytes",
+      "label": "string",
+      "numberOfBytes": "32"
+    },
+    "t_struct(Bytes32Deque)13629_storage": {
+      "encoding": "inplace",
+      "label": "struct DoubleEndedQueue.Bytes32Deque",
+      "members": [
+        {
+          "astId": 13622,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "_begin",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint128"
+        },
+        {
+          "astId": 13624,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "_end",
+          "offset": 16,
+          "slot": "0",
+          "type": "t_uint128"
+        },
+        {
+          "astId": 13628,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "_data",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_mapping(t_uint128,t_bytes32)"
+        }
+      ],
+      "numberOfBytes": "64"
+    },
+    "t_struct(Checkpoint208)12574_storage": {
+      "encoding": "inplace",
+      "label": "struct Checkpoints.Checkpoint208",
+      "members": [
+        {
+          "astId": 12571,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "_key",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint48"
+        },
+        {
+          "astId": 12573,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "_value",
+          "offset": 6,
+          "slot": "0",
+          "type": "t_uint208"
+        }
+      ],
+      "numberOfBytes": "32"
+    },
+    "t_struct(ProposalCore)762_storage": {
+      "encoding": "inplace",
+      "label": "struct Governor.ProposalCore",
+      "members": [
+        {
+          "astId": 751,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "proposer",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 753,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "voteStart",
+          "offset": 20,
+          "slot": "0",
+          "type": "t_uint48"
+        },
+        {
+          "astId": 755,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "voteDuration",
+          "offset": 26,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 757,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "executed",
+          "offset": 30,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 759,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "canceled",
+          "offset": 31,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 761,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "etaSeconds",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_uint48"
+        }
+      ],
+      "numberOfBytes": "64"
+    },
+    "t_struct(ProposalDetails)4405_storage": {
+      "encoding": "inplace",
+      "label": "struct GovernorStorage.ProposalDetails",
+      "members": [
+        {
+          "astId": 4396,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "targets",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_array(t_address)dyn_storage"
+        },
+        {
+          "astId": 4399,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "values",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_array(t_uint256)dyn_storage"
+        },
+        {
+          "astId": 4402,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "calldatas",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_array(t_bytes_storage)dyn_storage"
+        },
+        {
+          "astId": 4404,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "descriptionHash",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_bytes32"
+        }
+      ],
+      "numberOfBytes": "128"
+    },
+    "t_struct(ProposalVote)4000_storage": {
+      "encoding": "inplace",
+      "label": "struct GovernorCountingSimple.ProposalVote",
+      "members": [
+        {
+          "astId": 3991,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "againstVotes",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 3993,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "forVotes",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 3995,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "abstainVotes",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 3999,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "hasVoted",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_mapping(t_address,t_bool)"
+        }
+      ],
+      "numberOfBytes": "128"
+    },
+    "t_struct(Trace208)12569_storage": {
+      "encoding": "inplace",
+      "label": "struct Checkpoints.Trace208",
+      "members": [
+        {
+          "astId": 12568,
+          "contract": "contracts/govern/Governance.sol:Governance",
+          "label": "_checkpoints",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_array(t_struct(Checkpoint208)12574_storage)dyn_storage"
+        }
+      ],
+      "numberOfBytes": "32"
+    },
+    "t_uint128": {
+      "encoding": "inplace",
+      "label": "uint128",
+      "numberOfBytes": "16"
+    },
+    "t_uint208": {
+      "encoding": "inplace",
+      "label": "uint208",
+      "numberOfBytes": "26"
+    },
+    "t_uint256": {
+      "encoding": "inplace",
+      "label": "uint256",
+      "numberOfBytes": "32"
+    },
+    "t_uint32": {
+      "encoding": "inplace",
+      "label": "uint32",
+      "numberOfBytes": "4"
+    },
+    "t_uint48": {
+      "encoding": "inplace",
+      "label": "uint48",
+      "numberOfBytes": "6"
+    }
+  }
+}
