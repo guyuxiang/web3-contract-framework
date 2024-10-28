@@ -1,9 +1,11 @@
 {
   "devDependencies": {
+    "@chainlink/contracts": "1.2.0",
     "@ethersproject/abi": "^5.4.7",
     "@ethersproject/providers": "^5.4.7",
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
     "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-foundry": "^1.1.2",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.9",
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
     "@nomicfoundation/hardhat-verify": "^2.0.8",
@@ -16,6 +18,7 @@
     "chai": "^4.2.0",
     "ethers": "^6.8.1",
     "hardhat": "2.22.0",
+    "hardhat-forta": "^0.0.3",
     "hardhat-gas-reporter": "^1.0.8",
     "patch-package": "^8.0.0",
     "postinstall-postinstall": "^2.1.0",
@@ -24,8 +27,7 @@
     "solidity-coverage": "^0.8.0",
     "ts-node": "^10.9.2",
     "typechain": "^8.1.0",
-    "typescript": "^5.4.5",
-    "@chainlink/contracts": "1.2.0"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "bignumber.js": "^9.1.1",

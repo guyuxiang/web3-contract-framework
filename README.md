@@ -1,19 +1,19 @@
-# web3-contract-framework
+# web3-contract-scaffolding
 
 ## Introduction
 
-`web3-contract-framework`智能合约框架。
+`web3-contract-scaffolding`智能合约脚手架，对web3开源技术的整合应用，封装程度较低，相当于一套技术最佳实践。
 
 ## Architecture
 ![image](docs/images/architecture.png)
 - kyc层对进入合约的用户进行信息认证
 
-## Framework
+## Scaffolding
 
-`web3-contract-framework`框架核心架构如下，下面主要针对该包结构进行描述：
+`web3-contract-scaffolding`脚手架核心目录如下，下面主要针对该包结构进行描述：
 
 ```bash
-web3-contract-framework/
+web3-contract-scaffolding/
 ├── README.md
 ├── codegen
 ├── contracts
