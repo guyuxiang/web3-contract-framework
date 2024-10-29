@@ -1,12 +1,10 @@
 const accessControlChangesAgent = require("./access.control.changes");
 const contractUpgradeAgent = require("./contract.upgrade");
 const highGasUsedAgent = require("./high.gas.used");
-const highTansferCountAgent = require("./high.tansfer.count");
 const highTransferAmountAgent = require("./high.transfer.amount");
 const lowBalanceAgent = require("./low.balance");
 const ownershipChangesAgent = require("./ownership.changes");
 const setConfigAgent = require("./set.config");
-const transferFromAgent = require("./transfer.from");
 const txFailedAgent = require("./tx.failed");
 
 
