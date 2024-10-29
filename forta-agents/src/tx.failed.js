@@ -1,11 +1,16 @@
 const {Finding, FindingSeverity, FindingType, getTransactionReceipt} = require("forta-agent");
 const CONTRACT_ADDRESS = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F".toLowerCase();
+const {allCA} = require("./address")
 
 const handleTransaction = async (txEvent) => {
     const findings = [];
 
-    // 检查交易是否发送到指定合约地址
-    if (txEvent.to && txEvent.to.toLowerCase() === CONTRACT_ADDRESS) {
+    const transactions = txEvent.filterFunction(
+        null,
+        allCA
+    );
+
+    if (transactions.length) {
         if ((await getTransactionReceipt(txEvent.hash)).status === 0) {
             findings.push(
                 Finding.fromObject({
@@ -22,6 +27,7 @@ const handleTransaction = async (txEvent) => {
             );
         }
     }
+
 
     return findings;
 };

@@ -1,8 +1,8 @@
 const {Finding, FindingSeverity, FindingType} = require("forta-agent");
+const {accessCA} = require("./address")
 
 const ROLE_GRANTED_EVENT =
     "RoleGranted(bytes32 indexed role, address indexed account, address indexed sender)";
-const CONTRACT_ADDRESS = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F";
 
 const handleTransaction = async (txEvent) => {
     const findings = [];
@@ -10,7 +10,7 @@ const handleTransaction = async (txEvent) => {
     // filter the transaction logs for Tether transfer events
     const events = txEvent.filterLog(
         ROLE_GRANTED_EVENT,
-        CONTRACT_ADDRESS
+        accessCA
     );
 
     events.forEach((event) => {

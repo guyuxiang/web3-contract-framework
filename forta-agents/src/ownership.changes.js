@@ -1,8 +1,7 @@
 const {Finding, FindingSeverity, FindingType} = require("forta-agent");
-
+const {allCA} = require("./address")
 const OWNERSHIP_TRANSFERRED_EVENT =
     "OwnershipTransferred(address indexed previousOwner, address indexed newOwner)";
-const CONTRACT_ADDRESS = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F";
 
 const handleTransaction = async (txEvent) => {
     const findings = [];
@@ -10,20 +9,21 @@ const handleTransaction = async (txEvent) => {
     // filter the transaction logs for Tether transfer events
     const events = txEvent.filterLog(
         OWNERSHIP_TRANSFERRED_EVENT,
-        CONTRACT_ADDRESS
+        allCA
     );
 
     events.forEach((event) => {
         const {previousOwner, newOwner} = event.args;
         findings.push(
             Finding.fromObject({
-                name: "Contract Ownership Transferred",
-                description: `Contract ${CONTRACT_ADDRESS} Ownership Transferred`,
+                name: "Ownership Changes",
+                description: `Contract ${event.address} Ownership Transferred`,
                 alertId: "FORTA-6",
                 severity: FindingSeverity.High,
                 type: FindingType.Info,
                 metadata: {
-                    newOwner,
+                    previousOwner,
+                    newOwner
                 },
             })
         );

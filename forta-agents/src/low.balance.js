@@ -1,7 +1,7 @@
 const {Finding, FindingSeverity, FindingType, getEthersProvider} = require("forta-agent");
 const BigNumber = require("bignumber.js");
-export const ACCOUNT = "0x6efef34e81fd201edf18c7902948168e9ebb88ae"
-export const MIN_BALANCE = "500000000000000000" // 0.5 eth
+const {accessCA} = require("./address")
+export const MIN_BALANCE = "100000000000000000" // 0.1 eth
 const ethersProvider = getEthersProvider()
 
 function provideHandleBlock(ethersProvider) {
@@ -9,7 +9,7 @@ function provideHandleBlock(ethersProvider) {
         // report finding if specified account balance falls below threshold
         const findings = []
 
-        const accountBalance = new BigNumber((await ethersProvider.getBalance(ACCOUNT, blockEvent.blockNumber)).toString())
+        const accountBalance = new BigNumber((await ethersProvider.getBalance(accessCA, blockEvent.blockNumber)).toString())
         if (accountBalance.isGreaterThanOrEqualTo(MIN_BALANCE)) return findings
 
         findings.push(

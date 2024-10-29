@@ -16,12 +16,10 @@ function provideHandleTransaction(
     accessControlChangesAgent,
     contractUpgradeAgent,
     highGasUsedAgent,
-    highTansferCountAgent,
     highTransferAmountAgent,
     lowBalanceAgent,
     ownershipChangesAgent,
     setConfigAgent,
-    transferFromAgent,
     txFailedAgent
 ) {
     return async function handleTransaction(txEvent, blockEvent) {
@@ -33,12 +31,10 @@ function provideHandleTransaction(
                 accessControlChangesAgent.handleTransaction(txEvent),
                 contractUpgradeAgent.handleTransaction(txEvent),
                 highGasUsedAgent.handleTransaction(txEvent),
-                highTansferCountAgent.handleTransaction(txEvent),
                 highTransferAmountAgent.handleTransaction(txEvent),
                 lowBalanceAgent.handleTransaction(blockEvent),
                 ownershipChangesAgent.handleTransaction(txEvent),
                 setConfigAgent.handleTransaction(txEvent),
-                transferFromAgent.handleTransaction(txEvent),
                 txFailedAgent.handleTransaction(txEvent)
             ])
         ).flat();
@@ -54,12 +50,10 @@ module.exports = {
         accessControlChangesAgent,
         contractUpgradeAgent,
         highGasUsedAgent,
-        highTansferCountAgent,
         highTransferAmountAgent,
         lowBalanceAgent,
         ownershipChangesAgent,
         setConfigAgent,
-        transferFromAgent,
         txFailedAgent
     ),
 };

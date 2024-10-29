@@ -1,6 +1,6 @@
 const BigNumber = require("bignumber.js");
 const {Finding, FindingSeverity, FindingType} = require("forta-agent");
-const TOKEN_ADDRESS = "0xdac17f958d2ee523a2206206994597c13d831ec7";
+const {tokenCA} = require("./address")
 const TOKEN_DECIMALS = 6;
 const ERC20_TRANSFER_EVENT =
     "event Transfer(address indexed from, address indexed to, uint value)";
@@ -14,7 +14,7 @@ function provideHandleTransaction(amountThreshold) {
         // filter the transaction logs for USDT Transfer events
         const tokenTransferEvents = txEvent.filterLog(
             ERC20_TRANSFER_EVENT,
-            TOKEN_ADDRESS
+            tokenCA
         );
 
         // fire alerts for transfers of large amounts
