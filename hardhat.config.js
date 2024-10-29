@@ -24,6 +24,9 @@ module.exports = {
       viaIR: true,
     }
   },
+  forta: {
+    contextPath: "forta-agents", // default: "agents"
+  },
   tenderly: {
     username: "<username." ?? "error",
     project: "<projectname>",
