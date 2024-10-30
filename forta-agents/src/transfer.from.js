@@ -27,7 +27,7 @@ function provideHandleTransaction() {
                 Finding.fromObject({
                     name: "Token Delegate Transfer",
                     description: `${formattedAmount} token transferred`,
-                    alertId: "FORTA-8",
+                    alertId: "ABT",
                     severity: FindingSeverity.Info,
                     type: FindingType.Info,
                     metadata: {

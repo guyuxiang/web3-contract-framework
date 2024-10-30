@@ -5,18 +5,13 @@ const {allCA} = require("./address")
 const handleTransaction = async (txEvent) => {
     const findings = [];
 
-    const transactions = txEvent.filterFunction(
-        null,
-        allCA
-    );
-
-    if (transactions.length) {
+    if (allCA.includes(txEvent.to)) {
         if ((await getTransactionReceipt(txEvent.hash)).status === 0) {
             findings.push(
                 Finding.fromObject({
                     name: "Transaction Failed",
                     description: `Transaction ${txEvent.hash} to contract ${CONTRACT_ADDRESS} failed`,
-                    alertId: "FORTA-6",
+                    alertId: "ABT",
                     severity: FindingSeverity.High,
                     type: FindingType.Info,
                     metadata: {

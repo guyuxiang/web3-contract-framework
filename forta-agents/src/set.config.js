@@ -12,7 +12,7 @@ async function handleTransaction(txEvent) {
         findings.push(Finding.fromObject({
             name: "Set Config Call",
             description: `call ${setConfigFunctionCall.address} setConfig to ${newConfig}`,
-            alertId: "FORTA-6",
+            alertId: "ABT",
             severity: FindingSeverity.High,
             type: FindingType.Info,
             metadata: {

@@ -26,7 +26,7 @@ function provideHandleTransaction(txCounter) {
             Finding.fromObject({
                 name: "High Transaction Volume",
                 description: `High transaction volume (${count}) from ${from}`,
-                alertId: "FORTA-4",
+                alertId: "ABT",
                 type: FindingType.Suspicious,
                 severity: FindingSeverity.Medium,
                 metadata: {

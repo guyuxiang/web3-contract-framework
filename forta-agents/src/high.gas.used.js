@@ -10,12 +10,7 @@ const CRITICAL_GAS_THRESHOLD = "7000000";
 const handleTransaction = async (txEvent) => {
     const findings = []
 
-    const transactions = txEvent.filterFunction(
-        null,
-        allCA
-    );
-
-    if (transactions.length) {
+    if (allCA.includes(txEvent.to)) {
         const { gasUseds } = await getTransactionReceipt(txEvent.hash)
         const gasUsed = new BigNumber(gasUseds);
         const findings = [];
@@ -26,7 +21,7 @@ const handleTransaction = async (txEvent) => {
             Finding.fromObject({
                 name: "High Gas Used",
                 description: `Gas Used: ${gasUsed}`,
-                alertId: "FORTA-1",
+                alertId: "ABT",
                 type: FindingType.Suspicious,
                 severity: getSeverity(gasUsed),
                 metadata: {

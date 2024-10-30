@@ -1,7 +1,7 @@
 const {Finding, FindingSeverity, FindingType} = require("forta-agent");
 const {allCA} = require("./address")
 const OWNERSHIP_TRANSFERRED_EVENT =
-    "OwnershipTransferred(address indexed previousOwner, address indexed newOwner)";
+    "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)";
 
 const handleTransaction = async (txEvent) => {
     const findings = [];
@@ -18,7 +18,7 @@ const handleTransaction = async (txEvent) => {
             Finding.fromObject({
                 name: "Ownership Changes",
                 description: `Contract ${event.address} Ownership Transferred`,
-                alertId: "FORTA-6",
+                alertId: "ABT",
                 severity: FindingSeverity.High,
                 type: FindingType.Info,
                 metadata: {

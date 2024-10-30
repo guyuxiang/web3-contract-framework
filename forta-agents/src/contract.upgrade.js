@@ -18,7 +18,7 @@ const handleTransaction = async (txEvent) => {
             Finding.fromObject({
                 name: "Contract Upgrade",
                 description: `Contract ${event.address} Upgraded`,
-                alertId: "FORTA-6",
+                alertId: "ABT",
                 severity: FindingSeverity.High,
                 type: FindingType.Info,
                 metadata: {

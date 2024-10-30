@@ -5,7 +5,7 @@ const TOKEN_DECIMALS = 6;
 const ERC20_TRANSFER_EVENT =
     "event Transfer(address indexed from, address indexed to, uint value)";
 
-const AMOUNT_THRESHOLD = "1000000"; // 1 million
+const AMOUNT_THRESHOLD = "100000"; // 0.1 million
 
 function provideHandleTransaction(amountThreshold) {
     return async function handleTransaction(txEvent) {
@@ -31,7 +31,7 @@ function provideHandleTransaction(amountThreshold) {
                 Finding.fromObject({
                     name: "Large Token Transfer",
                     description: `${formattedAmount} USDT transferred`,
-                    alertId: "FORTA-7",
+                    alertId: "ABT",
                     severity: FindingSeverity.Info,
                     type: FindingType.Info,
                     metadata: {

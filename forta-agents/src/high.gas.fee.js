@@ -23,7 +23,7 @@ function provideHandleTransaction(cryptoPriceGetter) {
             Finding.fromObject({
                 name: "High Gas Fee (USD)",
                 description: `Gas Fee: $${totalFeeUsd.toFixed(2)}`,
-                alertId: "FORTA-2",
+                alertId: "ABT",
                 type: FindingType.Suspicious,
                 severity: getSeverity(totalFeeUsd),
                 metadata: {
